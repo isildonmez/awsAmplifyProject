@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 import Amplify, { API } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import awsExports from './aws-exports';
@@ -57,7 +57,7 @@ class App extends Component {
     const path = '/Notes/object/' + this.state.noteId;
     try {
       const apiResponse = await API.del('NotesCRUD', path);
-      console.log("response from deleteing note: " + apiResponse);
+      console.log('response from deleteing note: ' + apiResponse);
       this.setState({ apiResponse });
     } catch (e) {
       console.log(e);
@@ -65,11 +65,34 @@ class App extends Component {
   }
 
   render() {
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      textInput: {
+          margin: 15,
+          height: 30,
+          width: 200,
+          borderWidth: 1,
+          color: 'green',
+          fontSize: 20,
+          backgroundColor: 'black'
+       }
+    });
     return (
-      <View>
-        <Button title="Send Request" onPress={this.getSample.bind(this)} />
+      <View style={styles.container}>
         <Text>Response: {this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
-        <Text>Hello World!</Text>
+        <Button title='Save Note' onPress={this.saveNote.bind(this)} />
+        <Button title='Get Note' onPress={this.getNote.bind(this)} />
+        <Button title='Delete Note' onPress={this.deleteNote.bind(this)} />
+        <TextInput
+          style={styles.textInput}
+          autoCapitalize='none'
+          onChangeText={this.handleChangeNoteId}
+        />
       </View>
     );
   }
