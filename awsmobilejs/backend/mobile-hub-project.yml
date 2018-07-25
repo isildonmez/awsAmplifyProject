@@ -61,5 +61,20 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              NoteTitle: S
+              NoteContent: S
+            hashKeyName: NoteId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-Notes
+            tablePrivacy: public
+            indexes: []
 name: awsAmplifyProject-2018-07-25-15-07-10
 region: us-east-2
