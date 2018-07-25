@@ -64,6 +64,13 @@ class App extends Component {
     }
   }
 
+  async uploadFile() {
+    const file = 'My upload text';
+    const name = 'myFile.txt';
+    const access = { level: 'public' };
+    Storage.put(name, file, access);
+  }
+
   render() {
     const styles = StyleSheet.create({
       container: {
