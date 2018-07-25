@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
-import Amplify, { API, Storage } from 'aws-amplify';
+import Amplify, { API, Storage, Analytics } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import awsExports from './aws-exports';
 
@@ -89,7 +89,16 @@ class App extends Component {
     Storage.remove(key, access);
   }
 
+  handleClick = () => {
+    Analytics.record('SECOND-EVENT-NAME');
+    // See the last button below.
+  }
+
   render() {
+    componentDidMount() {
+      Analytics.record('FIRST-EVENT-NAME');
+    }
+
     const styles = StyleSheet.create({
       container: {
         flex: 1,
@@ -113,6 +122,7 @@ class App extends Component {
         <Button title='Save Note' onPress={this.saveNote.bind(this)} />
         <Button title='Get Note' onPress={this.getNote.bind(this)} />
         <Button title='Delete Note' onPress={this.deleteNote.bind(this)} />
+        <Button title='Record event' onPress={this.handleClick} />
         <TextInput
           style={styles.textInput}
           autoCapitalize='none'
