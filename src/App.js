@@ -71,6 +71,13 @@ class App extends Component {
     Storage.put(name, file, access);
   }
 
+  async getFile() {
+    const name = 'myFile.txt';
+    const access = { level: 'public' };
+    const fileUrl = await Storage.get(name, access);
+    // use fileUrl to get the file
+  }
+
   render() {
     const styles = StyleSheet.create({
       container: {
