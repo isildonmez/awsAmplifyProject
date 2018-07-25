@@ -84,6 +84,11 @@ class App extends Component {
     const files = await Storage.list(path, access);
   }
 
+  async deleteFile(key) {
+    const access = { level: 'public' };
+    Storage.remove(key, access);
+  }
+
   render() {
     const styles = StyleSheet.create({
       container: {
