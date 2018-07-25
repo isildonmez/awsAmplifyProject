@@ -19,6 +19,17 @@ class App extends Component {
     this.setState({ apiResponse });
   }
 
+  async getNote() {
+    const path = '/Notes/object/' + this.state.noteId;
+    try {
+      const apiResponse = await API.get('NotesCRUD', path);
+      console.log('response from getting note: ' + apiResponse);
+      this.setState({ apiResponse });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   handleChangeNoteId = (event) => {
     this.setState({ noteId: event });
   }
