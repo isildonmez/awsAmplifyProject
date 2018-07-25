@@ -53,6 +53,17 @@ class App extends Component {
     }
   }
 
+  async deleteNote() {
+    const path = '/Notes/object/' + this.state.noteId;
+    try {
+      const apiResponse = await API.del('NotesCRUD', path);
+      console.log("response from deleteing note: " + apiResponse);
+      this.setState({ apiResponse });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
       <View>
