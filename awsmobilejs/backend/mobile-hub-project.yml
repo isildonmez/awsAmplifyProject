@@ -2,6 +2,38 @@
 features:
   cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
     components:
+      NotesCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: NotesCRUD
+          requires-signin: true
+          sdk-generation-stage-name: Development
+        paths:
+          /Notes: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/Notes-20180725170301.zip
+            description: 'Handler for calls to resource path : /Notes/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: LypWXUzAXEIjMNKkGHSoao5awReFgxLhGFkMs4txy/8=
+            memorySize: '128'
+            modified: '2018-07-25T16:03:57.199+0000'
+            name: Notes
+            runtime: nodejs6.10
+            timeout: '3'
+            version: _ZnumJauZ4QIggROfSLi_d6an2B4.lEM
+          '/Notes/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/Notes-20180725170301.zip
+            description: 'Handler for calls to resource path : /Notes/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: LypWXUzAXEIjMNKkGHSoao5awReFgxLhGFkMs4txy/8=
+            memorySize: '128'
+            modified: '2018-07-25T16:03:57.199+0000'
+            name: Notes
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 2hspZXvno706Ey_v.LiMYc23urYNx2pB
       sampleCloudApi: !com.amazonaws.mobilehub.v0.API 
         attributes:
           name: sampleCloudApi
@@ -9,37 +41,52 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180725162132.zip
+            codeFilename: uploads/sampleLambda-20180725170301.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 87GSBNTo8LaYWN43ZEnRt6uCLJBMqC5lMAtNHdba2QY=
+            hashcode: y4CKAo0gtPYFSI/kfpaOI2ivulCP/P0qHqDagK5X/fA=
             memorySize: '128'
-            modified: '2018-07-25T15:22:47.207+0000'
+            modified: '2018-07-25T16:03:57.169+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: _02XEIXyMZRZGGGTlFbPyTDqjDG16XSA
+            version: cjEOuejobY59voTdTAv16rKBUNz8.oM4
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180725162132.zip
+            codeFilename: uploads/sampleLambda-20180725170301.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: 87GSBNTo8LaYWN43ZEnRt6uCLJBMqC5lMAtNHdba2QY=
+            hashcode: y4CKAo0gtPYFSI/kfpaOI2ivulCP/P0qHqDagK5X/fA=
             memorySize: '128'
-            modified: '2018-07-25T15:22:47.207+0000'
+            modified: '2018-07-25T16:03:57.169+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: 4rM7KTHn33QY3VnHQbto0WuYPrX1HGyU
+            version: VxTiS8.HQ08jW0f.OxNfjTggHALqrfec
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
       visibility: public-global
     components:
       release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              NoteContent: S
+              NoteId: S
+              NoteTitle: S
+            hashKeyName: NoteId
+            hashKeyType: S
+            rangeKeyName: ''
+            rangeKeyType: ''
+            tableName: ___DYNAMIC_PREFIX___-Notes
+            tablePrivacy: public
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
@@ -61,20 +108,5 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
-  database: !com.amazonaws.mobilehub.v0.Database 
-    components:
-      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
-        tables:
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
-              NoteTitle: S
-              NoteContent: S
-            hashKeyName: NoteId
-            hashKeyType: S
-            rangeKeyName: ''
-            rangeKeyType: ''
-            tableName: ___DYNAMIC_PREFIX___-Notes
-            tablePrivacy: public
-            indexes: []
 name: awsAmplifyProject-2018-07-25-15-07-10
 region: us-east-2

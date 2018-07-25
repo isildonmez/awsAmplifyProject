@@ -7,13 +7,20 @@ import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
 class App extends Component {
-  state = { apiResponse: null };
+  state = {
+    apiResponse: null,
+    noteId: ''
+  };
 
   async getSample() {
     const path = '/items'; //you can specify the path
     const apiResponse = await API.get('sampleCloudApi', path);
     console.log('response:' + apiResponse);
     this.setState({ apiResponse });
+  }
+
+  handleChangeNoteId = (event) => {
+    this.setState({ noteId: event });
   }
 
   render() {
