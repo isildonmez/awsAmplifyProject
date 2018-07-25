@@ -41,31 +41,31 @@ features:
           sdk-generation-stage-name: Development
         paths:
           /items: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180725170301.zip
+            codeFilename: uploads/sampleLambda-20180725180701.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: y4CKAo0gtPYFSI/kfpaOI2ivulCP/P0qHqDagK5X/fA=
+            hashcode: kqpuHAWFobg1W2dXOlo8SWobYGG214DkDxORLuMFiy8=
             memorySize: '128'
-            modified: '2018-07-25T16:03:57.169+0000'
+            modified: '2018-07-25T17:07:52.207+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: cjEOuejobY59voTdTAv16rKBUNz8.oM4
+            version: PGTUJKD_Ci9ofrZUpa6cdZM2ESHuyRR2
           '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/sampleLambda-20180725170301.zip
+            codeFilename: uploads/sampleLambda-20180725180701.zip
             description: 'Handler for calls to resource path : /items/{proxy+}'
             enableCORS: true
             environment: {}
             handler: lambda.handler
-            hashcode: y4CKAo0gtPYFSI/kfpaOI2ivulCP/P0qHqDagK5X/fA=
+            hashcode: kqpuHAWFobg1W2dXOlo8SWobYGG214DkDxORLuMFiy8=
             memorySize: '128'
-            modified: '2018-07-25T16:03:57.169+0000'
+            modified: '2018-07-25T17:07:52.207+0000'
             name: sampleLambda
             runtime: nodejs6.10
             timeout: '3'
-            version: VxTiS8.HQ08jW0f.OxNfjTggHALqrfec
+            version: KmVL1BVMmV8naoSGUVEAiykxLPvW0RRY
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
@@ -108,5 +108,9 @@ features:
             require-numbers: true
             require-symbols: true
             require-upper-case: true
+  user-files: !com.amazonaws.mobilehub.v0.UserFiles 
+    attributes:
+      enabled: true
+      wildcard-cors-policy: true
 name: awsAmplifyProject-2018-07-25-15-07-10
 region: us-east-2

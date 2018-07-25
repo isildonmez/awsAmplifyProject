@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
-import Amplify, { API } from 'aws-amplify';
+import Amplify, { API, Storage } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import awsExports from './aws-exports';
 
