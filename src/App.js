@@ -78,6 +78,12 @@ class App extends Component {
     // use fileUrl to get the file
   }
 
+  async componentDidMount() {
+    const path = this.props.path;
+    const access = { level: 'public' };
+    const files = await Storage.list(path, access);
+  }
+
   render() {
     const styles = StyleSheet.create({
       container: {
