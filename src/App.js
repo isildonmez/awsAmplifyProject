@@ -23,6 +23,25 @@ class App extends Component {
     this.setState({ noteId: event });
   }
 
+  async saveNote() {
+    const newNote = {
+      body: {
+        'NoteTitle': 'My first note!',
+        'NoteContent': 'This is so cool',
+        'NoteId': this.state.noteId
+      }
+    };
+    const path = '/Notes';
+
+    try {
+      const apiResponse = await API.put('NotesCRUD', path, newNote);
+      console.log('response from saving note: ' + apiResponse);
+      this.setState({ apiResponse });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   render() {
     return (
       <View>
